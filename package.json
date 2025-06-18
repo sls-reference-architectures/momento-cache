@@ -1,0 +1,45 @@
+{
+  "name": "momento-cache",
+  "version": "1.0.0",
+  "description": "Example architecture using Momento's caching",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint '**.*.js' --fix",
+    "test": "npx jest --testMatch '**/?(*.)+(unit.test).js'",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sls-reference-architectures/momento-cache.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sls-reference-architectures/momento-cache/issues"
+  },
+  "homepage": "https://github.com/sls-reference-architectures/momento-cache#readme",
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.29.0",
+    "@swc/core": "^1.12.1",
+    "@swc/jest": "^0.2.38",
+    "@types/jest": "^30.0.0",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jest": "^29.0.0",
+    "eslint-plugin-no-only-tests": "^3.3.0",
+    "husky": "^9.1.7",
+    "jest": "^30.0.0",
+    "jest-extended": "^6.0.0",
+    "lint-staged": "^16.1.2",
+    "osls": "^3.51.1",
+    "prettier": "^3.5.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,md,yml,json}": "npx prettier . --write --ignore-path .gitignore"
+  }
+}
