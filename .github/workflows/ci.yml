@@ -34,8 +34,8 @@ jobs:
         with:
           aws-region: us-east-1
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-      - name: Deploy App
-        run: npm run deploy:app
+      - name: Deploy
+        run: npm run deploy
       # - name: Run E2E tests
       #   run: npm run test:e2e
       #   env:
