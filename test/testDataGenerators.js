@@ -1,20 +1,27 @@
-import { ulid } from 'ulid';
 import { faker } from '@faker-js/faker';
+import { ulid } from 'ulid';
+import { createPk } from '../src/productRepository';
 
-const createDocumentMetadataInput = (overrideWith) => {
-  const documentMetadataInput = {
-    companyId: createTestId(),
-    fileName: faker.system.fileName(),
-    id: createTestId(),
-    objectKey: createTestId(),
-  };
-
-  return {
-    ...documentMetadataInput,
+const buildProductForDb = (overrideWith = {}) => {
+  const id = overrideWith.id || buildTestId();
+  const teamId = overrideWith.teamId || buildTestId();
+  const pk = createPk({ teamId, id });
+  const now = new Date().toISOString();
+  const ticket = {
+    created: now,
+    description: faker.lorem.sentence(),
+    id,
+    'team#id': pk,
+    teamId,
+    name: faker.lorem.words(3),
+    price: faker.number.int({ min: 1, max: 1000 }),
+    updated: now,
     ...overrideWith,
   };
+
+  return ticket;
 };
 
-const createTestId = () => `TEST_${ulid()}`;
+const buildTestId = () => `TEST_${ulid()}`;
 
-export { createDocumentMetadataInput, createTestId };
+export { buildProductForDb, buildTestId };

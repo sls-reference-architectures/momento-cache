@@ -1,0 +1,66 @@
+service: momento-cache
+
+frameworkVersion: 3.x
+
+configValidationMode: error
+
+provider:
+  architecture: arm64
+  deploymentBucket:
+    name: com.reference-architecture.deploys
+  environment:
+    POWERTOOLS_LOG_LEVEL: ${param:powertoolsLogLevel}
+    POWERTOOLS_LOGGER_SAMPLE_RATE: ${param:powertoolsLogSampleRate}
+  httpApi:
+    metrics: true
+    useProviderTags: true
+  logRetentionInDays: 7
+  name: aws
+  region: ${opt:region, 'us-east-1'}
+  runtime: nodejs22.x
+  stage: ${opt:stage, 'dev'}
+  tags:
+    lumigo:auto-trace: 'true'
+
+custom:
+  deploymentBucket:
+    blockPublicAccess: true
+    maxPreviousDeploymentArtifacts: 5
+    serverSideEncryption: AES256
+  esbuild:
+    minify: true
+  prune:
+    automatic: true
+    number: 3
+
+params:
+  default:
+    deploymentBucketName: io.parsable.platform.deploys.devtest
+    powertoolsLogLevel: DEBUG
+    powertoolsLogSampleRate: 1.0
+    tableName: momento-cache-${sls:stage}
+
+resources:
+  Resources:
+    ProductsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        BillingMode: PAY_PER_REQUEST
+        ContributorInsightsSpecification:
+          Enabled: true
+        TableName: ${param:tableName}
+        AttributeDefinitions:
+          - AttributeName: team#id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: team#id
+            KeyType: HASH
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-deployment-bucket

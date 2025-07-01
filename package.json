@@ -4,9 +4,11 @@
   "description": "Example architecture using Momento's caching",
   "main": "index.js",
   "scripts": {
+    "deploy": "npx sls deploy --conceal",
     "lint": "eslint .",
     "lint:fix": "eslint '**.*.js' --fix",
     "test": "npx jest --testMatch '**/?(*.)+(unit.test).js'",
+    "test:int": "npx jest --testMatch '**/?(*.)+(int.test).js' --config jest.config.int.js",
     "prepare": "husky"
   },
   "repository": {
@@ -21,8 +23,11 @@
   },
   "homepage": "https://github.com/sls-reference-architectures/momento-cache#readme",
   "devDependencies": {
+    "@aws-sdk/client-dynamodb": "^3.840.0",
+    "@aws-sdk/lib-dynamodb": "^3.840.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
+    "@faker-js/faker": "^9.8.0",
     "@swc/core": "^1.12.1",
     "@swc/jest": "^0.2.38",
     "@types/jest": "^30.0.0",
@@ -41,5 +46,9 @@
   "lint-staged": {
     "*.js": "eslint --cache --fix",
     "*.{js,md,yml,json}": "npx prettier . --write --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "http-errors": "^2.0.0",
+    "ulid": "^3.0.1"
   }
 }
