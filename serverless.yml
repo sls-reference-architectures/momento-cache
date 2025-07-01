@@ -62,5 +62,4 @@ resources:
           Enabled: true
 
 plugins:
-  - serverless-iam-roles-per-function
   - serverless-deployment-bucket
