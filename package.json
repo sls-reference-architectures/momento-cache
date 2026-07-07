@@ -41,7 +41,7 @@
     "jest-extended": "^6.0.0",
     "lint-staged": "^16.1.2",
     "osls": "^3.51.1",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.2",
     "serverless-deployment-bucket": "^1.6.0"
   },
   "lint-staged": {
