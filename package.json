@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/sls-reference-architectures/momento-cache#readme",
   "devDependencies": {
-    "@aws-sdk/client-dynamodb": "^3.840.0",
-    "@aws-sdk/lib-dynamodb": "^3.840.0",
+    "@aws-sdk/client-dynamodb": "^3.1081.0",
+    "@aws-sdk/lib-dynamodb": "^3.1081.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
     "@faker-js/faker": "^9.8.0",
