@@ -1,6 +1,6 @@
 service: momento-cache
 
-frameworkVersion: 3.x
+frameworkVersion: '4'
 
 configValidationMode: error
 
