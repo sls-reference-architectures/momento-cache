@@ -27,7 +27,7 @@
     "@aws-sdk/lib-dynamodb": "^3.1081.0",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
-    "@faker-js/faker": "^9.8.0",
+    "@faker-js/faker": "^10.5.0",
     "@swc/core": "^1.13.5",
     "@swc/jest": "^0.2.38",
     "eslint": "^9.38.0",
