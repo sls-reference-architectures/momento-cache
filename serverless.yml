@@ -19,8 +19,6 @@ provider:
   region: ${opt:region, 'us-east-1'}
   runtime: nodejs24.x
   stage: ${opt:stage, 'dev'}
-  tags:
-    lumigo:auto-trace: 'true'
 
 custom:
   deploymentBucket:
