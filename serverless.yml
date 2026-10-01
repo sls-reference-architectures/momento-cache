@@ -45,7 +45,7 @@ resources:
       Properties:
         BillingMode: PAY_PER_REQUEST
         ContributorInsightsSpecification:
-          Enabled: true
+          Enabled: false
         TableName: ${param:tableName}
         AttributeDefinitions:
           - AttributeName: team#id
